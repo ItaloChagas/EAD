@@ -23,7 +23,7 @@ public class Cliente {
 	@Id
 	@Column(name="CD_CLIENTE")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cliente")
-	private int codigo; 
+	private int codigo;
 	
 	@Column(name ="NM_CLIENTE", length = 100, nullable = false)
 	private String nome;
@@ -43,7 +43,7 @@ public class Cliente {
 	private TipoCliente tipo;
 	
 	@Column(name = "IMG_CLIENTE")
-	@Lob 
+	@Lob // No banco de dados vai ser criado uma tabela para guardar grandes arquivos
 	private byte[] imagem; 
 	
 	
