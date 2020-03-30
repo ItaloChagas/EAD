@@ -81,6 +81,11 @@ public class Conta {
 	public void setDataAberta(Calendar dataAberta) {
 		this.dataAberta = dataAberta;
 	}
+
+	public Integer getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
 	
 	
 	

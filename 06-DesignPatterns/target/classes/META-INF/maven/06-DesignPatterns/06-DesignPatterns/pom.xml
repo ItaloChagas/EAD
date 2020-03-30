@@ -23,12 +23,20 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.12.Final</version>
 		</dependency>
-		<dependency> 
+		
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.197</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>oracle</groupId>
 			<artifactId>jdbc-driver</artifactId>
 			<version>12</version>
 			<scope>system</scope>
-			<systemPath>C:/Users/italo.accurate/Downloads/ojdbc8.jar</systemPath>
+			<systemPath>C:/Users/italo/Downloads/ojdbc8.jar</systemPath>
 		</dependency>
    </dependencies>
    

@@ -6,6 +6,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -22,7 +23,7 @@ public class Veiculo {
 		this.ano = ano;
 	}
 	
-	
+	@Id
 	@Column(name = "cd_veiculo")
 	@GeneratedValue( generator = "veiculo", strategy = GenerationType.SEQUENCE )
 	private int id;

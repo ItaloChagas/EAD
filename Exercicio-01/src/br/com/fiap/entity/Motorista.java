@@ -15,6 +15,13 @@ import javax.persistence.TemporalType;
 @Table(name ="TB_MOTORISTA")
 public class Motorista {
 
+	public Motorista(int nCarteira, String nome, Genero genero) {
+		super();
+		this.nCarteira = nCarteira;
+		this.nome = nome;
+		this.genero = genero;
+	}
+
 	@Id
 	@Column(name = "nr_carteira")
 	private int nCarteira; 
@@ -31,6 +38,49 @@ public class Motorista {
 	
 	@Column(name = "ds_genero")
 	@Enumerated(EnumType.STRING )
-	private Genero genero; 
+	private Genero genero;
+
+	public int getnCarteira() {
+		return nCarteira;
+	}
+
+	public void setnCarteira(int nCarteira) {
+		this.nCarteira = nCarteira;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Calendar getDtNascimento() {
+		return dtNascimento;
+	}
+
+	public void setDtNascimento(Calendar dtNascimento) {
+		this.dtNascimento = dtNascimento;
+	}
+
+	public Byte[] getCarteira() {
+		return carteira;
+	}
+
+	public void setCarteira(Byte[] carteira) {
+		this.carteira = carteira;
+	}
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	} 
+	
+	
+	
 	
 }
