@@ -30,7 +30,7 @@ public class Conta {
 	}
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "conta_seq" )
+	@GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "conta_seq")
 	@Column( name = "CD_CONTA" )
 	private int id;
 	

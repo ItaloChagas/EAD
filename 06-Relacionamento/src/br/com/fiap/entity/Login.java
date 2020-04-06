@@ -36,6 +36,25 @@ public class Login {
 
 	
 	
+	public Login(Cliente cliente, String senha, String nome) {
+		super();
+		this.cliente = cliente;
+		this.senha = senha;
+		this.nome = nome;
+	}
+
+	public Login() {
+		super();
+	}
+
+	public Login(int codigo, Cliente cliente, String senha, String nome) {
+		super();
+		this.codigo = codigo;
+		this.cliente = cliente;
+		this.senha = senha;
+		this.nome = nome;
+	}
+
 	public int getCodigo() {
 		return codigo;
 	}

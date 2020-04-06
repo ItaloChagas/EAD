@@ -1,5 +1,7 @@
 package br.com.fiap.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -30,6 +33,24 @@ public class Endereco {
 	
 	@Column(name = "nr_numero")
 	private int numero;
+
+	//Mapeamento bidirecional com os Cliente (ManyToMany)
+	@ManyToMany(mappedBy = "enderecos")
+	private List<Cliente> clientes;
+	
+	
+	
+	
+	public Endereco(String logradouro, TipoEndereco tipo, int numero) {
+		super();
+		this.logradouro = logradouro;
+		this.tipo = tipo;
+		this.numero = numero;
+	}
+
+	public Endereco() {
+		super();
+	}
 
 	public int getCodigo() {
 		return codigo;

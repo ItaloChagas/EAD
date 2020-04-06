@@ -47,10 +47,17 @@ public class Pedido {
 	
 	
 	
-	
-	
-	
-	
+	public Pedido() {
+		super();
+	}
+
+	public Pedido(float valor, int quantidade, Calendar data) {
+		super();
+		this.valor = valor;
+		this.quantidade = quantidade;
+		this.data = data;
+	}
+
 	public int getCodigo() {
 		return codigo;
 	}

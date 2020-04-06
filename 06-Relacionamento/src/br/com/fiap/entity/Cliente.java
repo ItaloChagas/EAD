@@ -1,5 +1,6 @@
 package br.com.fiap.entity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -10,6 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -43,12 +47,96 @@ public class Cliente {
 			cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Login login;
 	
-	@OneToMany(mappedBy = "cliente")
-	private List<Pedido> pedidos;
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	
+
+	//Método que adiciona o pedido no cliente
+	public void addPedido(Pedido pedido) {
+		//Adiciona o pedido na lista de pedidos
+		pedidos.add(pedido);
+		//Setar o cliente do pedido (atributo que mapeia a FK)
+		pedido.setCliente(this);
+	}
+	
+	//Mapeamento da tabela asossiativa com endereco
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch =FetchType.EAGER)
+	//JoinColumns: coluna que armazena a PK da classe que estamos
+	@JoinTable(name = "TB_CLIENTE_ENDERECO", 
+	joinColumns = @JoinColumn(name="cd_cliente"),
+	inverseJoinColumns = @JoinColumn(name = "cd_endereco"))
+	private List<Endereco> enderecos;
+	
+	
+	
+	
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
+
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
+	}
+
+
+
 	public int getCodigo() {
 		return codigo;
 	}
+
+	
+	
+	public Cliente(String nome, String sobrenome, Calendar dt_nacimento) {
+		super();
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.dt_nacimento = dt_nacimento;
+		
+		
+	}
+
+
+
+
+
+	public Cliente(int codigo, String nome, String sobrenome, 
+			Calendar dt_nacimento, Login login,
+			List<Pedido> pedidos) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.dt_nacimento = dt_nacimento;
+		this.login = login;
+		this.pedidos = pedidos;
+	}
+
+
+
+
+
+	public Cliente() {
+		super();
+	}
+
+
+
+
 
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
